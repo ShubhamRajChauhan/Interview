@@ -1,0 +1,23 @@
+/* 
+Leetcode : 1653
+https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/description/?envType=daily-question&envId=2026-02-07
+*/
+
+
+class Solution {
+    public int minimumDeletions(String s) {
+        int n = s.length();
+        int count = 0;
+
+        Stack<Character> st = new Stack<>();
+        for(int i=0; i<n; i++) {
+            if(!st.isEmpty()  && s.charAt(i) == 'a' && st.peek() == 'b') {
+                st.pop();
+                count++;
+            } else {
+                st.push(s.charAt(i));
+            }
+        }
+        return count;
+    }
+}
